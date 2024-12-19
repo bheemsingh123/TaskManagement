@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}create_task{% endblock %}
+
+{% block content %}
+<div class="container p-5 w-75">
+    <h4 class="text-center bg-warning p-2">Create Task</h4>
+    <form method="post">
+
+       {% csrf_token %}
+
+        <label class="form-label" for="bt1">task </label>
+        <input class="form-control" type="text" id="bt1" name="bt1" value="{{task.title}}">
+        <label class="form-label" for="bt2">Description </label>
+        <input class="form-control" type="text" id="bt2" name="bt2" value="{{task.description}}">
+        <label class="form-label" for="bt3">start_date | </label>
+        <small class="text-warning">old : {{task.start_date}}</small>
+        <input class="form-control" type="datetime-local" id="bt3" name="bt3">
+
+        <label class="form-label" for="bt4">end_date | </label>
+        <small class="text-warning">old : {{task.end_date}}</small>
+        <input class="form-control" type="datetime-local" id="bt4" name="bt4">
+        <br>
+        <button type="submit" class="btn btn-outline-warning">Submit</button>
+    </form>
+</div>
+{% endblock %}

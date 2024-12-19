@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+
+
+
+
+<div class="container p-5">
+
+    <div class="row">
+        <div class="col-10">
+            <!--  -->
+            <div class="text-center text-white bg-success p-2">
+                <h4>
+                 <span>
+                    {% if user.is_authenticated %}
+                             <span class="text-warning">{{ user.username }}</span>
+                    {% endif %}
+                 </span>                    
+                    Task
+                </h4>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">StartDate</th>
+                        <th scope="col">EndDate</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td scope="col">{{task.id}}</td>
+                        <td scope="col">{{task.title}}</td>
+                        <td scope="col">{{task.description}}</td>
+                        <td scope="col">{{task.start_date}}</td>
+                        <td scope="col">{{task.end_date}}</td>
+                        <td>
+                            <a href="/delete/{{task.id}}" class="text-danger" style="text-decoration: none;">delete </a>
+                            <a href="/edit/{{task.id}}" style="text-decoration: none;">edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <!--  -->
+        </div>
+        <div class="col-2">
+            <!--  -->
+
+            <a href="{% url 'create_task' %}" style="text-decoration: none;"> Create task</a>
+            <!--  -->
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

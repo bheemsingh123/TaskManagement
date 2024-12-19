@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">TM</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a href="/profile" class="text-danger" style="text-decoration: none;">Dashboard</a>
+        </li>
+        {% else %}
+        {% endif %}
+
+      </ul>
+
+
+      <span class="mx-5 p-1">
+        {% if user.is_authenticated %}
+        Hi <span class="text-warning ">{{ user.username }}</span>!
+        <a href="/logout_user" class="btn btn-danger">Logout</a>
+
+
+        {% else %}
+        <a href="/login" class="btn btn-primary"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+        <a href="/register" class="btn btn-success">register</a>
+        {% endif %}
+
+      </span>
+
+    </div>
+  </div>
+</nav>
